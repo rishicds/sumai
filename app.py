@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.web.cli as stcli
 import os
 from langchain_groq import ChatGroq
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -18,7 +17,6 @@ import time
 load_dotenv()
 groq_api_key = os.getenv('GROQ_API_KEY')
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
-
 
 # Streamlit app title
 st.markdown("""
@@ -41,9 +39,6 @@ st.markdown("""
     </style>
     <h1 class="animated-title">Rogue AI 🤖</h1>
 """, unsafe_allow_html=True)
-
-
-
 
 # Custom header
 st.markdown("""
@@ -71,10 +66,9 @@ st.markdown("""
     <h1 class="animated-header"> Your Study Assistant</h1>
 """, unsafe_allow_html=True)
 
-
 # Navbar
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("",["Home", "About"])
+page = st.sidebar.radio("", ["Home", "About"])
 
 # Custom footer
 st.markdown("""
@@ -93,7 +87,7 @@ st.markdown("""
     }
     </style>
     <div class="footer">Built with 💖 by Rishi © 2024</div>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 if page == "Home":
     # Friendly greeting
@@ -118,8 +112,6 @@ if page == "Home":
     </style>
     <h3 class="animated-header">Upload Files Using the sidebar.</h3>
 """, unsafe_allow_html=True)
-
-
 
     # Initialize LLM and prompt template
     llm = ChatGroq(groq_api_key=groq_api_key, model_name="Gemma-7b-it")
